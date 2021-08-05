@@ -1,21 +1,63 @@
+import 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import Homepage from './Home';
+import { Platform, StyleSheet } from 'react-native';
+import { useFonts } from 'expo-font';
+import AnimatedLoader from './AnimatedLoader';
+import Header from './Header';
+import { navigationRef } from './RootNavigation';
+import ChildLogin from './ChildLogin';
+import ElderLogin from './ElderLogin';
+
+const Stack = createStackNavigator();
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+  let [fontsLoaded] = useFonts({
+    Lato: require('./assets/Lato-Regular.ttf'),
+  });
+
+  if (!fontsLoaded) {
+    return <AnimatedLoader />;
+  } else {
+    return (
+      <NavigationContainer style={styles.container} ref={navigationRef}>
+        <Stack.Navigator initialRouteName="Torchlight" headerMode="screen">
+          <Stack.Screen
+            name="Torchlight"
+            component={Homepage}
+            options={{ header: () => <Header type="logo" /> }}
+          />
+          <Stack.Screen
+            name="ChildLogin"
+            component={ChildLogin}
+            options={{
+              headerShown: 'none',
+              headerTitle: 'Back',
+              headerTintColor: '#FFF',
+              headerStyle: { backgroundColor: '#017092' },
+            }}
+          />
+          <Stack.Screen
+            name="ElderLogin"
+            component={ElderLogin}
+            options={{
+              headerShown: 'none',
+              headerTitle: 'Back',
+              headerTintColor: '#FFF',
+              headerStyle: { backgroundColor: '#447945' },
+            }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
   },
 });
