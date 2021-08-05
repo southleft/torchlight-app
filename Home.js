@@ -19,7 +19,6 @@ import expertAdvising from './assets/expert-advising.png';
 import expertQa from './assets/expert-qa.png';
 import informativePodcasts from './assets/informative-podcasts.png';
 import ondemandWebinars from './assets/ondemand-webinars.png';
-import AnimatedLoader from './AnimatedLoader';
 
 export default function Homepage({ navigation }) {
   const [isReady, setIsReady] = useState(false);
