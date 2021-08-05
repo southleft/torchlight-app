@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Image } from 'react-native';
+import { Platform, StyleSheet, View, Image } from 'react-native';
 import logo from './assets/torchlight-logo.png';
 
 export default function Header(props) {
@@ -13,11 +13,12 @@ export default function Header(props) {
 const styles = StyleSheet.create({
   header: {
     width: '100%',
-    height: 70,
+    height: Platform.OS === "ios" ? 90 : 70, // fixing spacing on iOS
     alignItems: 'flex-start',
-    justifyContent: 'flex-start',
+    justifyContent: 'center',
     paddingLeft: 16,
-    paddingTop: 28,
+    paddingTop: Platform.OS === "ios" ? 30 : 0, // fix logo overlaying clock on iOS
+  
   },
   text: {
     fontFamily: 'Lato',
