@@ -19,7 +19,4 @@ const styles = StyleSheet.create({
     paddingLeft: 16,
     paddingTop: 28,
   },
-  text: {
-    fontFamily: 'Lato',
-  },
 });
