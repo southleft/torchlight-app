@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     justifyContent: 'center',
     paddingLeft: 16,
-    paddingTop: Platform.OS === "ios" ? 30 : 0, // fix logo overlaying clock on iOS
+    paddingTop: Platform.OS === "ios" ? 30 : 10, // fix logo overlaying clock on iOS
   
   },
   text: {
