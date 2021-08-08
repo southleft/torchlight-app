@@ -4,7 +4,7 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Homepage from './Home';
-import { Platform, StyleSheet } from 'react-native';
+import { Platform, StyleSheet, SafeAreaView } from 'react-native';
 import { useFonts } from 'expo-font';
 import AnimatedLoader from './AnimatedLoader';
 import Header from './Header';
@@ -23,41 +23,46 @@ export default function App() {
     return <AnimatedLoader />;
   } else {
     return (
-      <NavigationContainer style={styles.container} ref={navigationRef}>
-        <Stack.Navigator initialRouteName="Torchlight" headerMode="screen">
-          <Stack.Screen
-            name="Torchlight"
-            component={Homepage}
-            options={{ header: () => <Header type="logo" /> }}
-          />
-          <Stack.Screen
-            name="ChildLogin"
-            component={ChildLogin}
-            options={{
-              headerShown: 'none',
-              headerTitle: 'Back',
-              headerTintColor: '#FFF',
-              headerStyle: { backgroundColor: '#017092' },
-            }}
-          />
-          <Stack.Screen
-            name="ElderLogin"
-            component={ElderLogin}
-            options={{
-              headerShown: 'none',
-              headerTitle: 'Back',
-              headerTintColor: '#FFF',
-              headerStyle: { backgroundColor: '#447945' },
-            }}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <SafeAreaView style={styles.safe}>
+        <NavigationContainer style={styles.container} ref={navigationRef}>
+          <Stack.Navigator initialRouteName="Torchlight" headerMode="screen">
+            <Stack.Screen
+              name="Torchlight"
+              component={Homepage}
+              options={{ header: () => <Header type="logo" /> }}
+            />
+            <Stack.Screen
+              name="ChildLogin"
+              component={ChildLogin}
+              options={{
+                headerShown: 'none',
+                headerTitle: 'Back',
+                headerTintColor: '#FFF',
+                headerStyle: { backgroundColor: '#017092' },
+              }}
+            />
+            <Stack.Screen
+              name="ElderLogin"
+              component={ElderLogin}
+              options={{
+                headerShown: 'none',
+                headerTitle: 'Back',
+                headerTintColor: '#FFF',
+                headerStyle: { backgroundColor: '#447945' },
+              }}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </SafeAreaView>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  safe: {
+    flex: 1,
+  },
   container: {
     paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
-  },
+  }
 });

@@ -13,10 +13,10 @@ export default function Header(props) {
 const styles = StyleSheet.create({
   header: {
     width: '100%',
-    height: Platform.OS === 'ios' ? 90 : 70, // fixing spacing on iOS
+    height: 70, // fixing spacing on iOS
     alignItems: 'flex-start',
     justifyContent: 'center',
     paddingLeft: 16,
-    paddingTop: Platform.OS === 'ios' ? 30 : 10, // fix logo overlaying clock on iOS
+    paddingTop: 10, // fix logo overlaying clock on iOS
   },
 });
