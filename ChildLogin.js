@@ -1,6 +1,6 @@
 import React, {useState, useRef} from 'react';
 import { WebView } from 'react-native-webview';
-import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
+import { View, TouchableOpacity, Text, StyleSheet, Platform } from 'react-native';
 import AnimatedLoader from './AnimatedLoader';
 
 export default function ChildLogin({ navigation: { navigate }}) {
@@ -56,7 +56,8 @@ export default function ChildLogin({ navigation: { navigate }}) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    paddingTop: Platform.OS === 'android' ? 24 : 0
   },
   tabBarContainer: {
     paddingTop: 12,
