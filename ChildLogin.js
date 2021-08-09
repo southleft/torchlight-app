@@ -3,7 +3,7 @@ import { WebView } from 'react-native-webview';
 import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
 import AnimatedLoader from './AnimatedLoader';
 
-export default function ChildLogin() {
+export default function ChildLogin({ navigation: { navigate }}) {
   const [canGoBack, setCanGoBack] = useState(false);
   const [canGoForward, setCanGoForward] = useState(false);
   const [currentUrl, setCurrentUrl] = useState('');
@@ -17,20 +17,13 @@ export default function ChildLogin() {
     if (webviewRef.current) webviewRef.current.goForward()
   }
 
+
   const removeFooter = `
   document.querySelector("div.layoutFooterContainer").setAttribute("hidden", "true");
   true;
   `;
   return (
     <View style={styles.container}>
-      <View style={styles.tabBarContainer}>
-        <TouchableOpacity onPress={backButtonHandler}>
-          <Text style={styles.button}>Back</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={frontButtonHandler}>
-          <Text style={styles.button}>Forward</Text>
-        </TouchableOpacity>
-      </View>
       <WebView
         source={{ uri: 'https://child.torchlight.care/' }}
         startInLoadingState={true}
@@ -46,6 +39,17 @@ export default function ChildLogin() {
           setCurrentUrl(navState.url)
         }}
       />
+      <View style={styles.tabBarContainer}>
+        <TouchableOpacity onPress={backButtonHandler}>
+          <Text style={styles.button}>{`<`}</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigate('Torchlight')}>
+          <Text style={styles.button}>Home</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={frontButtonHandler}>
+          <Text style={styles.button}>{`>`}</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
