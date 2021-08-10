@@ -24,7 +24,6 @@ export default function App() {
   } else {
     return (
       <NavigationContainer style={styles.container} ref={navigationRef}>
-        <StatusBar barStyle="dark-content" />
         <SafeAreaView style={styles.safe}>
           <Stack.Navigator initialRouteName="Torchlight" headerMode="screen">
             <Stack.Screen
