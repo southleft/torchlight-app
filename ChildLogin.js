@@ -43,6 +43,7 @@ return (
           setCanGoBack(currentUrl !== 'https://child.torchlight.care/login')
           setCurrentUrl(navState.url)
         }}
+      showsHorizontalScrollIndicator={false}
     />
       <View style={styles.tabBarContainer}>
         <TouchableWithoutFeedback onPress={backButtonHandler}>
