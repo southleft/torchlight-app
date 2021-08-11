@@ -43,6 +43,7 @@ export default function ElderLogin({ navigation: { navigate }}) {
           setCanGoBack(currentUrl !== 'https://elder.torchlight.care/login')
           setCurrentUrl(navState.url)
         }}
+        showsHorizontalScrollIndicator={false}
       />
       <View style={styles.tabBarContainer}>
         <TouchableWithoutFeedback onPress={backButtonHandler}>
