@@ -23,8 +23,8 @@ export default function App() {
     return <AnimatedLoader />;
   } else {
     return (
-      <SafeAreaView style={styles.safe}>
-        <NavigationContainer style={styles.container} ref={navigationRef}>
+      <NavigationContainer style={styles.container} ref={navigationRef}>
+        <SafeAreaView style={styles.safe}>
           <Stack.Navigator initialRouteName="Torchlight" headerMode="screen">
             <Stack.Screen
               name="Torchlight"
@@ -35,25 +35,19 @@ export default function App() {
               name="ChildLogin"
               component={ChildLogin}
               options={{
-                headerShown: 'none',
-                headerTitle: 'Back',
-                headerTintColor: '#FFF',
-                headerStyle: { backgroundColor: '#017092' },
+                headerShown: false
               }}
             />
             <Stack.Screen
               name="ElderLogin"
               component={ElderLogin}
               options={{
-                headerShown: 'none',
-                headerTitle: 'Back',
-                headerTintColor: '#FFF',
-                headerStyle: { backgroundColor: '#447945' },
+                headerShown: false
               }}
             />
           </Stack.Navigator>
-        </NavigationContainer>
-      </SafeAreaView>
+        </SafeAreaView>
+      </NavigationContainer>
     );
   }
 }
@@ -64,5 +58,5 @@ const styles = StyleSheet.create({
   },
   container: {
     paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
-  }
+  },
 });
