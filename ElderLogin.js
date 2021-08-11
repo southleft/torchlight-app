@@ -1,6 +1,6 @@
 import React, {useState, useRef} from 'react';
 import { WebView } from 'react-native-webview';
-import { View, TouchableWithoutFeedback, StyleSheet } from 'react-native';
+import { View, TouchableWithoutFeedback, StyleSheet, Platform } from 'react-native';
 import AnimatedLoader from './AnimatedLoader';
 import { FontAwesome } from '@expo/vector-icons';
 
