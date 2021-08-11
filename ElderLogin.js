@@ -1,31 +1,37 @@
 import React, {useState, useRef} from 'react';
 import { WebView } from 'react-native-webview';
-import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
+import { View, TouchableWithoutFeedback, StyleSheet } from 'react-native';
 import AnimatedLoader from './AnimatedLoader';
+import { FontAwesome } from '@expo/vector-icons';
 
-export default function ChildLogin({ navigation: { navigate }}) {
+export default function ElderLogin({ navigation: { navigate }}) {
   const [canGoBack, setCanGoBack] = useState(false);
   const [canGoForward, setCanGoForward] = useState(false);
   const [currentUrl, setCurrentUrl] = useState('');
   const webviewRef = useRef(null);
 
   let backButtonHandler = () => {
-    if (webviewRef.current) webviewRef.current.goBack()
+    if (webviewRef.current) {
+      webviewRef.current.goBack();
+      setCanGoForward(true);
+    }
   };
 
   let frontButtonHandler = () => {
-    if (webviewRef.current) webviewRef.current.goForward()
+    if (webviewRef.current) {
+      webviewRef.current.goForward()
+    }
   }
-
 
   const removeFooter = `
   document.querySelector("div.layoutFooterContainer").setAttribute("hidden", "true");
   true;
   `;
+
   return (
     <View style={styles.container}>
       <WebView
-        source={{ uri: 'https://elder.torchlight.care/' }}
+        source={{ uri: 'https://elder.torchlight.care/login' }}
         startInLoadingState={true}
         renderLoading={() => <AnimatedLoader />}
         injectedJavaScript={removeFooter}
@@ -34,21 +40,18 @@ export default function ChildLogin({ navigation: { navigate }}) {
         }}
         ref={webviewRef}
         onNavigationStateChange={navState => {
-          setCanGoBack(canGoBack)
-          setCanGoForward(canGoForward)
+          setCanGoBack(currentUrl !== 'https://elder.torchlight.care/login')
           setCurrentUrl(navState.url)
         }}
       />
       <View style={styles.tabBarContainer}>
-        <TouchableOpacity onPress={backButtonHandler}>
-          <Text style={styles.button}>{`<`}</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigate('Torchlight')}>
-          <Text style={styles.button}>Home</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={frontButtonHandler}>
-          <Text style={styles.button}>{`>`}</Text>
-        </TouchableOpacity>
+        <TouchableWithoutFeedback onPress={backButtonHandler}>
+          <FontAwesome name="chevron-left" style={styles.navButton} color={canGoBack ? 'white' : '#bbbbbb80'}/>
+        </TouchableWithoutFeedback>
+        
+        <TouchableWithoutFeedback onPress={frontButtonHandler}>
+        <FontAwesome name="chevron-right" style={styles.navButton} color={canGoForward ? 'white' : '#bbbbbb80'}/>
+        </TouchableWithoutFeedback>
       </View>
     </View>
   );
@@ -56,19 +59,19 @@ export default function ChildLogin({ navigation: { navigate }}) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    paddingTop: Platform.OS === 'android' ? 24 : 0
   },
   tabBarContainer: {
-    paddingTop: 12,
-    paddingBottom: 12,
+    paddingTop: 14,
+    paddingBottom: 14,
     paddingLeft: 24,
     paddingRight: 24,
     flexDirection: 'row',
     justifyContent: 'space-between',
     backgroundColor: '#447945'
   },
-  button: {
-    color: 'white',
-    fontSize: 18
+  navButton: {
+    fontSize: 32
   }
 })
