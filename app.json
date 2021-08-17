@@ -1,22 +1,27 @@
 {
   "expo": {
-    "name": "TorchlightApp",
-    "slug": "TorchlightApp",
-    "owner": "southleft",
+    "name": "Torchlight",
+    "slug": "Torchlight",
+    "owner": "soutleftllc",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": ["**/*", "assets/*"],
     "ios": {
-      "bundleIdentifier": "com.southleft.TorchlightApp",
+      "bundleIdentifier": "com.Torchlight.App",
       "buildNumber": "1.0.0",
       "supportsTablet": true
     },
     "android": {
-      "package": "com.southleft.TorchlightApp",
+      "package": "com.Torchlight.App",
       "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
@@ -26,6 +31,6 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "description": ""
+    "description": "Torchlight Caregiving, Child and Elder"
   }
 }
