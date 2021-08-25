@@ -1,8 +1,8 @@
 {
   "expo": {
     "name": "Torchlight",
-    "slug": "Torchlight",
-    "owner": "soutleftllc",
+    "slug": "torchlight",
+    "owner": "southleftllc",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -16,12 +16,12 @@
     },
     "assetBundlePatterns": ["**/*", "assets/*"],
     "ios": {
-      "bundleIdentifier": "com.Torchlight.App",
+      "bundleIdentifier": "com.southleftllc.torchlight",
       "buildNumber": "1.0.0",
       "supportsTablet": true
     },
     "android": {
-      "package": "com.Torchlight.App",
+      "package": "com.southleftllc.torchlight",
       "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
