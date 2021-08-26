@@ -15,7 +15,10 @@
 ### Synchronizing version numbers with git branches
 * Every new version should have a corresponding branch
 * Merge each major OR minor version's initial branch (i.e. _2.0.0, 2.1.0, etc_) into branch Main
-* Do not merge patch versions into branch Main
+* Update the README to include changelog of each new release
+* Include the README changes in the patch version AND commit and merge the README into branch Main also
+  * *This should be the ONLY file that gets merged into Main as part of a patch version*
+* Do not merge files from patch versions (except the README) into branch Main
 
 ## Releases
 ### 1.0.0
