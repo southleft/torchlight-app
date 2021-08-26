@@ -15,28 +15,8 @@
 ### Synchronizing version numbers with git branches
 * Every new version should have a corresponding branch
 * Merge each major OR minor version's initial branch (i.e. _2.0.0, 2.1.0, etc_) into branch Main
-* Update the README to include changelog of each new release
-* Include the README changes in the patch version AND commit and merge the README into branch Main also
+* Update changelog.md to include changelog of each new release
+* Update changelog.md in the patch version AND **_commit and merge changelog.md into branch Main also_**
   * *This should be the ONLY file that gets merged into Main as part of a patch version*
-* Do not merge files from patch versions (except the README) into branch Main
-
-## Releases
-### 1.0.0
-* Initial submission to both iOS and Android stores
-
-### 1.0.1
-* This was an aborted patch for iOS; it was created before the official version scheme (above) was adopted and was not used to create a build
-
-### 1.1.0
-* Minor changes to iOS build
-* Splash screen replaced; original did not meet minimum coverage
-* **_NOTE: this version was created before the official version scheme (above) was adopted. It should be the only version that breaks the scheme_**  
-  * The next patch for Android should therefore be 1.1.2, rather than 1.0.2
-  * The 1.1.2 (Android) release will automatically include the new splash screen, in addition to other changes it introduces for Android
-
-### 1.1.1
-* Addresses rejection issues from App Store:
-  1. App loaded indefinitely after launch 
-      * Device type: iPad
-      * OS version: iOS 14.7.1
-  1. 5.5-inch iPhone screenshots only display a login screen
+  * *Failing to update changelog.md in Main with every commit will cause a merge conflict; a kitten will die as a result*
+* Do not merge files from patch versions (except the CHANGELOG) into branch Main
