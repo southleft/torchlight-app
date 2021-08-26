@@ -27,7 +27,9 @@
 ### 1.1.0
 * Minor changes to iOS build
 * Splash screen replaced; original did not meet minimum coverage
-* **_NOTE: this version was created before the official version scheme (above) was adopted. It should be the only version that breaks the scheme. The next patch for Android should therefore be 1.1.2, rather than 1.0.2_**  
+* **_NOTE: this version was created before the official version scheme (above) was adopted. It should be the only version that breaks the scheme_**  
+  * The next patch for Android should therefore be 1.1.2, rather than 1.0.2
+  * The 1.1.2 (Android) release will automatically include the new splash screen, in addition to other changes it introduces for Android
 
 ### 1.1.1
 * Addresses rejection issues from App Store:
