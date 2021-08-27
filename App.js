@@ -5,8 +5,6 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Homepage from './Home';
 import { Platform, StyleSheet, SafeAreaView } from 'react-native';
-import { useFonts } from 'expo-font';
-import AnimatedLoader from './AnimatedLoader';
 import Header from './Header';
 import { navigationRef } from './RootNavigation';
 import ChildLogin from './ChildLogin';
@@ -15,41 +13,33 @@ import ElderLogin from './ElderLogin';
 const Stack = createStackNavigator();
 
 export default function App() {
-  let [fontsLoaded] = useFonts({
-    Lato: require('./assets/Lato-Regular.ttf'),
-  });
-
-  if (!fontsLoaded) {
-    return <AnimatedLoader />;
-  } else {
-    return (
-      <NavigationContainer style={styles.container} ref={navigationRef}>
-        <SafeAreaView style={styles.safe}>
-          <Stack.Navigator initialRouteName="Torchlight" headerMode="screen">
-            <Stack.Screen
-              name="Torchlight"
-              component={Homepage}
-              options={{ header: () => <Header type="logo" /> }}
-            />
-            <Stack.Screen
-              name="ChildLogin"
-              component={ChildLogin}
-              options={{
-                headerShown: false
-              }}
-            />
-            <Stack.Screen
-              name="ElderLogin"
-              component={ElderLogin}
-              options={{
-                headerShown: false
-              }}
-            />
-          </Stack.Navigator>
-        </SafeAreaView>
-      </NavigationContainer>
-    );
-  }
+  return (
+    <NavigationContainer style={styles.container} ref={navigationRef}>
+      <SafeAreaView style={styles.safe}>
+        <Stack.Navigator initialRouteName="Torchlight" headerMode="screen">
+          <Stack.Screen
+            name="Torchlight"
+            component={Homepage}
+            options={{ header: () => <Header type="logo" /> }}
+          />
+          <Stack.Screen
+            name="ChildLogin"
+            component={ChildLogin}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="ElderLogin"
+            component={ElderLogin}
+            options={{
+              headerShown: false,
+            }}
+          />
+        </Stack.Navigator>
+      </SafeAreaView>
+    </NavigationContainer>
+  );
 }
 
 const styles = StyleSheet.create({

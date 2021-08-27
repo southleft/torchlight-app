@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   ScrollView,
   StyleSheet,
@@ -21,24 +21,46 @@ import informativePodcasts from './assets/informative-podcasts.png';
 import ondemandWebinars from './assets/ondemand-webinars.png';
 
 export default function Homepage({ navigation }) {
-  const [isReady, setIsReady] = useState(false);
-  const appLoading = async () => {
-    try {
-      await SplashScreen.preventAutoHideAsync();
-    } catch (error) {
-      console.warn(error);
-    } finally {
-      setIsReady(true);
-      await SplashScreen.hideAsync;
-    }
-  };
+  const [appIsReady, setAppIsReady] = useState(false);
 
   useEffect(() => {
-    appLoading();
+    async function prepare() {
+      try {
+        // Keep the splash screen visible while we fetch resources
+        await SplashScreen.preventAutoHideAsync();
+        // Pre-load fonts, make any API calls you need to do here
+        // await Font.loadAsync(Entypo.font);
+        // Artificially delay for two seconds to simulate a slow loading
+        // experience. Please remove this if you copy and paste the code!
+        // await new Promise((resolve) => setTimeout(resolve, 2000));
+      } catch (e) {
+        console.warn(e);
+      } finally {
+        // Tell the application to render
+        setAppIsReady(true);
+      }
+    }
+
+    prepare();
   }, []);
 
-  return isReady ? (
-    <ScrollView>
+  const onLayoutRootView = useCallback(async () => {
+    if (appIsReady) {
+      // This tells the splash screen to hide immediately! If we call this after
+      // `setAppIsReady`, then we may see a blank screen while the app is
+      // loading its initial state and rendering its first pixels. So instead,
+      // we hide the splash screen once we know the root view has already
+      // performed layout.
+      await SplashScreen.hideAsync();
+    }
+  }, [appIsReady]);
+
+  if (!appIsReady) {
+    return null;
+  }
+
+  return (
+    <ScrollView onLayout={onLayoutRootView}>
       <View style={styles.container}>
         <ImageBackground style={styles.heroImage} source={backgroundImg}>
           <View style={styles.horizLine}></View>
@@ -90,9 +112,7 @@ export default function Homepage({ navigation }) {
         </View>
       </View>
     </ScrollView>
-  ) : (
-    null
-  ); // if animated loader doesn't display, use null here instead
+  );
 }
 
 const styles = StyleSheet.create({
