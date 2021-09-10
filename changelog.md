@@ -20,3 +20,8 @@
       * Device type: iPad
       * OS version: iOS 14.7.1
   1. 5.5-inch iPhone screenshots only display a login screen
+
+## 1.1.3
+* Addresses rejection issue from App Store:
+  1. Lack of citations for medical information
+      * No changes to app needed; citations were added to source pages on website
