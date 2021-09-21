@@ -17,16 +17,8 @@
     "assetBundlePatterns": ["**/*", "assets/*"],
     "ios": {
       "bundleIdentifier": "com.southleftllc.torchlight",
-      "buildNumber": "1.1.1",
+      "buildNumber": "2.0.0",
       "supportsTablet": true
-    },
-    "android": {
-      "package": "com.southleftllc.torchlight",
-      "versionCode": 1,
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
-      }
     },
     "web": {
       "favicon": "./assets/favicon.png"
