@@ -22,6 +22,7 @@
   1. 5.5-inch iPhone screenshots only display a login screen
 
 ## 2.0.0
-* Separate iOS build
+* Separate iOS build created
+  1. Entirely new codebase created; new repo
   1. Removed WebView component
   1. App now includes home screen only; users will leave the app and continue in browsers after selecting either Child or Elder path
